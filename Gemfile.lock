@@ -55,6 +55,7 @@ DEPENDENCIES
   dm-postgres-adapter
   dm-timestamps
   dm-types
+  json
   pg
   sinatra
   thin

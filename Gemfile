@@ -8,5 +8,6 @@ gem 'dm-core'
 gem 'dm-migrations'
 gem 'dm-types'
 gem 'dm-timestamps'
+gem 'json'
 gem 'pg'
 

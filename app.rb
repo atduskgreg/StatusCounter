@@ -37,6 +37,16 @@ get "/counted/:id" do
 	end
 end
 
+get "/counted/:id/json" do
+	@counted = Counted.get params[:id]
+	if @counted
+		content_type :json
+		@counted.to_json
+	else 
+		404
+	end
+end
+
 post "/counted" do
 	counted = Counted.new
 	counted.name = params[:name]
