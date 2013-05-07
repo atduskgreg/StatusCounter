@@ -1,0 +1,23 @@
+<p><a href="/">Home</a></p>
+<h2><%= @counted.name %></h2>
+
+
+<% if @counted.count_options.length < 0 %>
+<p><em>No options yet</em></p>
+<% else %>
+	<% @counted.count_options.each do |opt| %>
+		<form method="post" action="/counted/<%= @counted.id %>/options/<%= opt.id %>/ticks">
+		<p>
+		<input type="submit" value="<%= opt.name %>" /> <%= opt.ticks.count %>
+		</p>
+		</form>
+
+	<% end %>
+<% end %>
+
+<form method="post" action="/counted/<%= @counted.id %>/options">
+	<p>
+		<label>New Option: </label> <input type="text" name="name"></input>
+		<input type="submit" />
+	</p>
+</form>
