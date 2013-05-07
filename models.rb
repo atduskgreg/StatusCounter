@@ -23,11 +23,15 @@ class Counted
     json_hash = {:graph => {
                   :title => name,
                   :refreshEveryNSeconds => 10,
-                  :datapoints => []
+                  :datasequences => []
                   }
                 }
     count_options.each do |opt|
-      json_hash[:datapoints] << {opt.name => opt.ticks.count}
+      datasequence = {:name => opt.name, :datapoints => []}
+      opt.ticks.each do |tick|
+        datasequence[:datapoints] << {:title => tick.created_at.to_s, :value => opt.ticks_at(tick.created_at)}
+      end
+      json_hash[:graph][:datasequences] << datasequence
     end
 
     json_hash.to_json
@@ -42,6 +46,10 @@ class CountOption
 
   belongs_to :counted
   has n, :ticks
+
+  def ticks_at date_time
+    self.ticks.count(:created_at.lte => date_time)
+  end
 end
 
 class Tick
