@@ -1,4 +1,4 @@
-Tom Word of the Day
+Status Counter
 =============
 
-Little Printer publication for Tom Coates to make awesome Words of the Day.
+Simple API for authoring Status Board feeds.
