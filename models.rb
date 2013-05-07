@@ -27,7 +27,7 @@ class Counted
                   }
                 }
     count_options.each do |opt|
-      datasequence = {:name => opt.name, :datapoints => []}
+      datasequence = {:title => opt.name, :datapoints => []}
       opt.ticks.each do |tick|
         datasequence[:datapoints] << {:title => tick.created_at.to_s, :value => opt.ticks_at(tick.created_at)}
       end
