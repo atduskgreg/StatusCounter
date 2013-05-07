@@ -20,9 +20,12 @@ class Counted
   has n, :count_options
 
   def to_json
-    json_hash = {:title => name,
-                 :refreshEveryNSeconds => 10,
-                 :datapoints => []}
+    json_hash = {:graph => {
+                  :title => name,
+                  :refreshEveryNSeconds => 10,
+                  :datapoints => []
+                  }
+                }
     count_options.each do |opt|
       json_hash[:datapoints] << {opt.name => opt.ticks.count}
     end
