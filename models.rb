@@ -8,7 +8,7 @@ require 'open-uri'
 require 'dm-timestamps'
 require 'date'
 
-DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_ROSE_URL'] || 'postgres://localhost/status_counter')
+DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_SILVER_URL'] || 'postgres://localhost/status_counter')
 
 class Counted
   include DataMapper::Resource
