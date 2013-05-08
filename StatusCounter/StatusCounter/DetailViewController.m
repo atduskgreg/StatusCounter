@@ -86,13 +86,14 @@
     // Update the user interface for the detail item.
 
     //if (self.detailItem) {
-        //self.detailDescriptionLabel.text = [self.detailItem description];
     
     // retrieve the counted from the detailItem
-    SCCounted* carColors = self.detailItem;
+    SCCounted* counted = self.detailItem;
 
-    for(id key in carColors.optionsWithNames){
-        NSLog(@"key=%@ value=%@", key, [carColors.optionsWithNames objectForKey:key]);
+    int currButton = 0;
+    
+    for(id key in counted.optionsWithNames){
+        NSLog(@"key=%@ value=%@", key, [counted.optionsWithNames objectForKey:key]);
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
         [button addTarget:self
@@ -100,10 +101,22 @@
          forControlEvents:UIControlEventTouchDown];
         [button setTitle:key forState:UIControlStateNormal];
         
+        int yPad = 10;
+        int xPad = 10;
         
-         button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+        int mysteryMissingHeight = 60;
+        
+        float buttonWidth = self.view.frame.size.width - xPad * 2;
+        float buttonHeight = (self.view.frame.size.height - mysteryMissingHeight - ((counted.optionsWithNames.count-1) * yPad))/(float)counted.optionsWithNames.count;
+        
+        float buttonTop =  yPad*(currButton+1) + buttonHeight*currButton;
+        
+        
+         button.frame = CGRectMake(xPad, buttonTop, buttonWidth, buttonHeight);
         
         [self.view addSubview:button];
+        
+        currButton++;
     }
     //}
 
