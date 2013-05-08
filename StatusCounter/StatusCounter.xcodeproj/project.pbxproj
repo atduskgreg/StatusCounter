@@ -25,6 +25,7 @@
 		3763949B173AC04D0020143A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37639470173AC04D0020143A /* Foundation.framework */; };
 		376394A3173AC04D0020143A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 376394A1173AC04D0020143A /* InfoPlist.strings */; };
 		376394A6173AC04D0020143A /* StatusCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 376394A5173AC04D0020143A /* StatusCounterTests.m */; };
+		376394B1173AD64E0020143A /* SCCounted.m in Sources */ = {isa = PBXBuildFile; fileRef = 376394B0173AD64E0020143A /* SCCounted.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		376394A2173AC04D0020143A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		376394A4173AC04D0020143A /* StatusCounterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusCounterTests.h; sourceTree = "<group>"; };
 		376394A5173AC04D0020143A /* StatusCounterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatusCounterTests.m; sourceTree = "<group>"; };
+		376394AF173AD64E0020143A /* SCCounted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCounted.h; sourceTree = "<group>"; };
+		376394B0173AD64E0020143A /* SCCounted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCounted.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 		37639474173AC04D0020143A /* StatusCounter */ = {
 			isa = PBXGroup;
 			children = (
+				376394AF173AD64E0020143A /* SCCounted.h */,
+				376394B0173AD64E0020143A /* SCCounted.m */,
 				3763947D173AC04D0020143A /* AppDelegate.h */,
 				3763947E173AC04D0020143A /* AppDelegate.m */,
 				37639486173AC04D0020143A /* MainStoryboard_iPhone.storyboard */,
@@ -283,6 +288,7 @@
 				3763947F173AC04D0020143A /* AppDelegate.m in Sources */,
 				3763948E173AC04D0020143A /* MasterViewController.m in Sources */,
 				37639491173AC04D0020143A /* DetailViewController.m in Sources */,
+				376394B1173AD64E0020143A /* SCCounted.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

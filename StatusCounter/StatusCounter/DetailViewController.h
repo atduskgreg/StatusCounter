@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SCCounted.h"
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>{
 }
 -(void) postToURL:(NSString*) reqURL withParams:(NSString*) paramsString;
 -(void) reportTickForOption:(int) countOptionId onCountedId:(int) countedId;
+-(void) optionButtonClicked:(UIButton*) sender;
 
 @property (strong, nonatomic) id detailItem;
 

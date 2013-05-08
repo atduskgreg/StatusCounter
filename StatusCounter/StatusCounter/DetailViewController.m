@@ -29,8 +29,20 @@
     if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
     }
+           
+}
 
- [self reportTickForOption:1 onCountedId:1];
+-(void) optionButtonClicked:(UIButton*) sender
+{
+    NSLog(@"button clicked: %@",sender.titleLabel.text);
+    
+    SCCounted* counted = self.detailItem;
+    NSLog(@"titleLabel text: %@", sender.titleLabel.text);
+    NSInteger optionId = [[counted.optionsWithNames objectForKey:sender.titleLabel.text] integerValue];
+    NSLog(@"selected optionId: %d", optionId);
+
+    
+    [self reportTickForOption:optionId onCountedId:counted.countedId];
 }
 
 -(void) reportTickForOption:(int) countOptionId onCountedId:(int) countedId
@@ -38,9 +50,6 @@
     NSString *requestURL = [NSString stringWithFormat:@"http://statuscounter.herokuapp.com/counted/%d/options/%d/ticks", countedId, countOptionId];
     
     NSLog(@"requestURL: %@", requestURL);
-    
-    //NSString* paramsString = [NSString stringWithFormat:@"name=%@", tickName];
-    //NSLog(@"paramsString: %@", paramsString);
     
     NSString* paramsString = @"";
     
@@ -76,9 +85,28 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    //if (self.detailItem) {
+        //self.detailDescriptionLabel.text = [self.detailItem description];
+    
+    // retrieve the counted from the detailItem
+    SCCounted* carColors = self.detailItem;
+
+    for(id key in carColors.optionsWithNames){
+        NSLog(@"key=%@ value=%@", key, [carColors.optionsWithNames objectForKey:key]);
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        
+        [button addTarget:self
+                   action:@selector(optionButtonClicked:)
+         forControlEvents:UIControlEventTouchDown];
+        [button setTitle:key forState:UIControlStateNormal];
+        
+        
+         button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+        
+        [self.view addSubview:button];
     }
+    //}
+
 }
 
 - (void)viewDidLoad

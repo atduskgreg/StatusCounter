@@ -117,9 +117,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        
+        SCCounted *carColors = [[SCCounted alloc] init];
+        carColors.countedId = 1;
+        carColors.name = @"car colors";
+        carColors.optionsWithNames = @{@"red" : @1, @"blue" : @2 ,@"green" : @3};
+    
+        
+        [[segue destinationViewController] setDetailItem:carColors];
+
     }
 }
 
