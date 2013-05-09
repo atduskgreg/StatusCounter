@@ -22,6 +22,7 @@ class Counted
   def simple_json
     json_hash = {
       :name => name,
+      :id => self.id,
       :count_options => count_options.collect{|c| {:name => c.name, :id => c.id} } 
     }
     json_hash.to_json
