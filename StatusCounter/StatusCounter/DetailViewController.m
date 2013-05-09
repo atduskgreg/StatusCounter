@@ -59,31 +59,7 @@
     
     NSString* paramsString = @"";
     
-    [self postToURL:requestURL withParams:paramsString];
-}
-
--(void) postToURL:(NSString*) reqURL withParams:(NSString*) paramsString
-{
-
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:reqURL]];
-
-    NSMutableData *postData=[NSMutableData data];
-
-    [postData appendData:[paramsString dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [request setHTTPMethod:@"POST"];
-    [request setValue:[NSString stringWithFormat:@"%d", [postData length]] forHTTPHeaderField:@"Content-Length"];
-
-    
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:
-     ^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         
-         NSLog(@"success?");
-         //[self didLoadData:data];
-     }];
+    [SCCounted postToURLAsync:requestURL withParams:paramsString];
 }
 
 

@@ -15,4 +15,7 @@
 @property NSMutableDictionary* optionsWithNames;
 @property bool created;
 
++(void) postToURLAsync:(NSString*) reqURL withParams:(NSString*) paramsString;
++(NSData*) postToURL:(NSString*) reqURL withParams:(NSString*) paramsString;
+
 @end

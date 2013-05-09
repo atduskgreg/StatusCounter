@@ -75,13 +75,43 @@
     
     _counted.optionsWithNames = [[NSMutableDictionary alloc] init];
     
-    NSNumber* i = [NSNumber numberWithInt:1];
+   
+    
+    NSString *requestURL = @"http://statuscounter.herokuapp.com/counted";
+    NSMutableString* paramsString = [NSMutableString stringWithFormat:@"name=%@", _countedNameField.text];
+    
+    
+    
+    NSNumber* i = [NSNumber numberWithInt:0];
     for(NSString* opt in _countOptions){
-        [_counted.optionsWithNames setObject:i forKey:opt];
+        
+        [paramsString appendString:[NSMutableString stringWithFormat:@"&count_options[%@]=%@",i,opt]];
+        
+        //[_counted.optionsWithNames setObject:i forKey:opt];
         
         i = [NSNumber numberWithInt:([i intValue] + 1)];
     }
     
+    NSLog(@"paramsString: %@", paramsString);
+    
+    NSData* jsonResponse = [SCCounted postToURL:requestURL withParams:paramsString];
+    
+    NSString *jsonString = [[NSString alloc] initWithData:jsonResponse encoding:NSUTF8StringEncoding];
+
+    
+    NSLog(@"jsonResponse: %@", jsonString);
+    
+    NSError* e = nil;
+    NSDictionary* countedJson = [NSJSONSerialization JSONObjectWithData:jsonResponse options:NSJSONReadingAllowFragments error:&e];
+    
+    _counted.optionsWithNames = [[NSMutableDictionary alloc] init];
+    
+    for(NSDictionary* countOption in [countedJson objectForKey:@"count_options"]){
+        [_counted.optionsWithNames setObject:[countOption objectForKey:@"id"] forKey:[countOption objectForKey:@"name"]];
+    }
+    
+    
+    _counted.countedId = [[countedJson objectForKey:@"id"] integerValue];
     
     [_objects addObject:_counted];
 
