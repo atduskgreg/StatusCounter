@@ -15,6 +15,7 @@
 -(void) reportTickForOption:(int) countOptionId onCountedId:(int) countedId;
 -(void) optionButtonClicked:(UIButton*) sender;
 
+
 @property (strong, nonatomic) id detailItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;

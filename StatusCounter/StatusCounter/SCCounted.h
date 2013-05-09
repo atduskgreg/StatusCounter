@@ -12,6 +12,7 @@
 
 @property int countedId;
 @property NSString* name;
-@property NSDictionary* optionsWithNames;
+@property NSMutableDictionary* optionsWithNames;
+@property bool created;
 
 @end

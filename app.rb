@@ -51,6 +51,7 @@ post "/counted" do
 	counted = Counted.new
 	counted.name = params[:name]
 	counted.save
+
 	redirect "/counted/#{counted.id}"
 end
 

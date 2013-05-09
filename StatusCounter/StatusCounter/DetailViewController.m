@@ -15,6 +15,12 @@
 
 @implementation DetailViewController
 
+-(IBAction)cancelNewCounted:(UIStoryboardSegue *)segue {
+
+    NSLog(@"segue");
+}
+
+
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem

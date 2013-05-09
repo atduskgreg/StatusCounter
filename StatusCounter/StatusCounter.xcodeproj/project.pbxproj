@@ -26,6 +26,7 @@
 		376394A3173AC04D0020143A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 376394A1173AC04D0020143A /* InfoPlist.strings */; };
 		376394A6173AC04D0020143A /* StatusCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 376394A5173AC04D0020143A /* StatusCounterTests.m */; };
 		376394B1173AD64E0020143A /* SCCounted.m in Sources */ = {isa = PBXBuildFile; fileRef = 376394B0173AD64E0020143A /* SCCounted.m */; };
+		376394B4173B007A0020143A /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 376394B3173B007A0020143A /* NewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		376394A5173AC04D0020143A /* StatusCounterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatusCounterTests.m; sourceTree = "<group>"; };
 		376394AF173AD64E0020143A /* SCCounted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCounted.h; sourceTree = "<group>"; };
 		376394B0173AD64E0020143A /* SCCounted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCounted.m; sourceTree = "<group>"; };
+		376394B2173B007A0020143A /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
+		376394B3173B007A0020143A /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				3763947E173AC04D0020143A /* AppDelegate.m */,
 				37639486173AC04D0020143A /* MainStoryboard_iPhone.storyboard */,
 				37639489173AC04D0020143A /* MainStoryboard_iPad.storyboard */,
+				376394B2173B007A0020143A /* NewViewController.h */,
+				376394B3173B007A0020143A /* NewViewController.m */,
 				3763948C173AC04D0020143A /* MasterViewController.h */,
 				3763948D173AC04D0020143A /* MasterViewController.m */,
 				3763948F173AC04D0020143A /* DetailViewController.h */,
@@ -289,6 +294,7 @@
 				3763948E173AC04D0020143A /* MasterViewController.m in Sources */,
 				37639491173AC04D0020143A /* DetailViewController.m in Sources */,
 				376394B1173AD64E0020143A /* SCCounted.m in Sources */,
+				376394B4173B007A0020143A /* NewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

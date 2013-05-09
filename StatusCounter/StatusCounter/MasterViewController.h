@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
+@property (nonatomic) IBOutlet UITableView* tableView;
+
 @end

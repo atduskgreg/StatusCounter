@@ -7,7 +7,7 @@
 //
 
 #import "MasterViewController.h"
-
+#import "NewViewController.h"
 #import "DetailViewController.h"
 
 @interface MasterViewController () {
@@ -34,7 +34,15 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
-    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+   self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+    NSLog(@"boo!");
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,10 +56,20 @@
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
     }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    //SCCounted *counted = [[SCCounted alloc] init];
+    //counted.name = @"Thing to count";
+    //[_objects insertObject:counted atIndex:0];
+    
+    NSLog(@"num entries: %d", [_objects count] );
+    
+    [self performSegueWithIdentifier: @"showNew" sender: self];
+    
+    //[_objects insertObject:counted atIndex:0];
+    //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    //[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+
 
 #pragma mark - Table View
 
@@ -69,8 +87,9 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    SCCounted *object = _objects[indexPath.row];
+    NSLog(@"object name: %@", [object name]);
+    cell.textLabel.text = [object name];
     return cell;
 }
 
@@ -109,7 +128,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = _objects[indexPath.row];
+        SCCounted *object = _objects[indexPath.row];
         self.detailViewController.detailItem = object;
     }
 }
@@ -117,15 +136,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        
-        SCCounted *carColors = [[SCCounted alloc] init];
-        carColors.countedId = 1;
-        carColors.name = @"car colors";
-        carColors.optionsWithNames = @{@"red" : @1, @"blue" : @2 ,@"green" : @3};
-    
-        
-        [[segue destinationViewController] setDetailItem:carColors];
 
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        SCCounted *object = _objects[indexPath.row];
+        [[segue destinationViewController] setDetailItem:object];
+
+    } else if ([[segue identifier] isEqualToString:@"showNew"]) {
+        NSLog(@"segue to showNew");
+        
+        [[segue destinationViewController] setDetailItem:_objects];
     }
 }
 
