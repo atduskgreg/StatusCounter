@@ -68,8 +68,7 @@
     }
 }
 
-// create button should only be present if at least
-// one option has been added
+
 -(void) createButtonPressed:(id)sender
 {
     _counted.name = _countedNameField.text;
@@ -83,7 +82,6 @@
         i = [NSNumber numberWithInt:([i intValue] + 1)];
     }
     
-    NSLog(@"opts: %@", _counted.optionsWithNames);
     
     [_objects addObject:_counted];
 

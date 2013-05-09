@@ -41,7 +41,7 @@ get "/counted/:id/json" do
 	@counted = Counted.get params[:id]
 	if @counted
 		content_type :json
-		@counted.to_json
+		@counted.graph_json
 	else 
 		404
 	end
@@ -52,7 +52,19 @@ post "/counted" do
 	counted.name = params[:name]
 	counted.save
 
-	redirect "/counted/#{counted.id}"
+	if params[:count_options]
+		params[:count_options].each do |key, option_name|
+			co = counted.count_options.new
+			co.name = option_name
+			co.save
+		end
+	content_type :json
+	counted.simple_json
+	else 
+		redirect "/counted/#{counted.id}"
+
+	end
+
 end
 
 post '/counted/:id/options' do

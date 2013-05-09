@@ -19,7 +19,15 @@ class Counted
 
   has n, :count_options
 
-  def to_json
+  def simple_json
+    json_hash = {
+      :name => name,
+      :count_options => count_options.collect{|c| {:name => c.name, :id => c.id} } 
+    }
+    json_hash.to_json
+  end
+
+  def graph_json
     json_hash = {:graph => {
                   :title => name,
                   :refreshEveryNSeconds => 10,
